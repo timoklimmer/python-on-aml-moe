@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-import time
 
 import joblib
 import numpy
@@ -33,12 +32,6 @@ def run(raw_data):
     data = json.loads(raw_data)["data"]
     data = numpy.array(data)
     result = model.predict(data)
-
-    print(f"Starting to wait...")
-    for i in range(10):
-        print(f"{i}...")
-        time.sleep(1)
-    print(f"Waiting completed.")
 
     logging.info("Request processed")
     return result.tolist()
