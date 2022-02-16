@@ -1,0 +1,17 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: default
+endpoint_name: dummy  # will be set from outside
+model:
+  #name: sklearn_regression_model
+  local_path: sklearn_regression_model.pkl
+code_configuration:
+  code:
+    local_path: .
+  scoring_script: score.py
+environment:
+  conda_file: conda.yml
+  image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210727.v1
+instance_type: Standard_F2s_v2
+instance_count: 1
+request_settings:
+  request_timeout_ms: 2000
